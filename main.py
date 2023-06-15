@@ -2,7 +2,7 @@ from message_api import MessageAPI
 from weather_api import WeatherAPI
 from weather_parser import WeatherParser
 from message_builder import MessageBuilder
-from config import cities, pushover
+from config import cities
 import os
 
 def main():
