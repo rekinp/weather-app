@@ -14,7 +14,9 @@ class MessageAPI:
                               "user": self.user,
                               "message": message,
                           }), {"Content-type": "application/x-www-form-urlencoded"})
-            self.conn.getresponse()
+            response = self.conn.getresponse()
+            if response.status >= 400:
+                raise Exception(f"HTTP Error {response.status}: {response.reason}")
         except http.client.HTTPException as e:
             # Handle HTTP-related exceptions here
             print(f"HTTPException occurred: {e}")

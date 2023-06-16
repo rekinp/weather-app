@@ -12,7 +12,9 @@ class MessageBuilder:
 
     @property
     def message(self):
+        msg_header = f"{self.city}:\n" \
+                   f"Temperature: {self.min_temp} - {self.max_temp}°C."
         if self.hours_to_rain > 0:
-            return f"{self.city} is going to {self.condition} in {self.hours_to_rain + 1} hours. Temp: {self.min_temp} - {self.max_temp}."
+            return msg_header + f"\nIt is going to {self.condition} in {self.hours_to_rain + 1} hours. "
         else:
-            return f"{self.city} no rain for next 12 hours. Temp: {self.min_temp} - {self.max_temp}."
+            return msg_header + f"\n No rain for the next 12 hours."
