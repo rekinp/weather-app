@@ -1,8 +1,8 @@
 cities = {
     "FrankfurtOder":
         {
-            "lat": 52.347225,
-            "lon": 14.550567
+            "lat": 52.3472,
+            "lon": 14.5506
         }
     # ,"Poznan":
     #     {

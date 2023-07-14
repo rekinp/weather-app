@@ -1,20 +1,18 @@
 class MessageBuilder:
     def __init__(self, city,
-                 condition,
-                 hours_to_rain,
+                 condition_1h,
+                 condition_6h,
                  max_temp,
                  min_temp):
         self.city = city
-        self.condition = condition
-        self.hours_to_rain = hours_to_rain
+        self.condition_1h = condition_1h
+        self.condition_6h = condition_6h
         self.max_temp = max_temp
         self.min_temp = min_temp
 
     @property
     def message(self):
-        msg_header = f"{self.city}:\n" \
-                   f"Temperature: {self.min_temp} - {self.max_temp}°C."
-        if self.hours_to_rain > 0:
-            return msg_header + f"\nIt is going to {self.condition} in {self.hours_to_rain + 1} hours. "
-        else:
-            return msg_header + f"\n No rain for the next 12 hours."
+        return f"{self.city}:\n" \
+               f"Temperature: {self.min_temp} - {self.max_temp}°C.\n" \
+               f"Next hour: {self.condition_1h.replace('_', ' ')}\n" \
+               f"Next 6 hours: {self.condition_6h.replace('_', ' ')}\n"

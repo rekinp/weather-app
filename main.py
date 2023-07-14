@@ -10,12 +10,11 @@ def main():
     for city in cities:
         weather_data = WeatherAPI(lat=cities[city]["lat"], lon=cities[city]["lon"]).fetch_weather_data()
         weather_parser = WeatherParser(weather_api_response_data=weather_data)
-        hours_to_rain = weather_parser.when_is_going_to_rain()
         max_temp = weather_parser.get_max_temperature()
         min_temp = weather_parser.get_min_temperature()
         message_builder = MessageBuilder(city=city,
-                                         condition=weather_parser.weather_list[hours_to_rain].description,
-                                         hours_to_rain=hours_to_rain,
+                                         condition_1h=weather_parser.weather_list[1].next_1_hours,
+                                         condition_6h=weather_parser.weather_list[1].next_6_hours,
                                          max_temp=max_temp,
                                          min_temp=min_temp)
         messages_to_be_sent.append(message_builder.message)
